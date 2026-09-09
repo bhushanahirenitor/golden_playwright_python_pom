@@ -1,0 +1,5 @@
+{
+    "rows": "tbody tr",
+    "BTN_View": "button:has-text('View')",
+    "orderdIdDetail": ".col-text"
+}
