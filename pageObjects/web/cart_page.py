@@ -12,7 +12,7 @@ def load_locator(filename):
 class CartPage(CommonPage):
     def __init__(self, page, scenario):
         super().__init__(page, scenario)
-        self.locators = load_locator("cart_page_locators.json")
+        self.locators = load_locator("cart_page.json")
 
     def verify_product_is_displayed(self, product_name):
         selected_product = self.page.get_by_role("heading", name=product_name)
