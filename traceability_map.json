@@ -1,3 +1,7 @@
 {
- 
+   "C46": {
+    "file_name": "tests/web/testlogin.py",
+    "class_name": "",
+    "function_name": "test_product_checkout"
+  },
 }
