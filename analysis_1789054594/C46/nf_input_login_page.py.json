@@ -1,0 +1,40 @@
+{
+  "python_file_path": "pageObjects/web/login_page.py",
+  "missing_methods": [
+    {
+      "intent": "Navigate to the login page",
+      "proposed_signature": "go_to()",
+      "detailed_requirements": "Navigate to the login page URL. Wait for the page to load and verify that key login page elements (such as username field, password field, or login button) are visible to confirm successful navigation.",
+      "implementation_checklist": [
+        "Navigate to URL from self.test_data['qa'] using self.page.goto()",
+        "Wait for page load state 'domcontentloaded' using self.page.wait_for_load_state()",
+        "Call self.scenario.a11y_analysis() for accessibility check",
+        "Wait for 'userName' field to be visible using self.page.locator()",
+        "Wait for 'password' field to be visible using self.page.locator()",
+        "Wait for 'signInbutton' to be visible using self.page.locator()",
+        "Verify that all key login elements are present and visible"
+      ],
+      "required_locator_keys": [
+        "userName",
+        "password",
+        "signInbutton"
+      ]
+    },
+    {
+      "intent": "Input username",
+      "proposed_signature": "input_username(username)",
+      "detailed_requirements": "Locate the username input field on the login page. Clear any existing text in the field. Input the provided username parameter into the field. Optionally verify that the text was entered correctly.",
+      "implementation_checklist": [
+        "Wait for 'userName' field to be visible using self.page.locator()",
+        "Clear existing text in 'userName' field using .clear() or .fill('')",
+        "Input username parameter into 'userName' field using self.page.locator(self.locators['userName']).fill(username)",
+        "Optionally get the input value from 'userName' field to verify text was entered correctly",
+        "Optionally assert that retrieved value matches the username parameter"
+      ],
+      "required_locator_keys": [
+        "userName"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\ndef load_test_data():\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    with open(os.path.join(base_dir, \"testData\", \"web\", \"test_data.json\")) as f:\n        return json.load(f)\n\nclass LoginPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"login_page_locators.json\")\n        self.test_data = load_test_data()\n\n    def go_to(self):\n        self.page.goto(self.test_data[\"qa\"])\n        self.page.wait_for_load_state(\"domcontentloaded\")\n        self.scenario.a11y_analysis()\n\n    def valid_login(self, username, password):\n        self.page.locator(self.locators[\"userName\"]).fill(username)\n        self.page.locator(self.locators[\"password\"]).fill(password)\n        self.page.locator(self.locators[\"signInbutton\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n"
+}
