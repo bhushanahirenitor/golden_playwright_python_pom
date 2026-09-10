@@ -1,0 +1,8 @@
+{
+  "ui_map_file_path": "locators/web/dashboard_locators.json",
+  "missing_locators": [
+    "dashboard_header",
+    "navigation_menu"
+  ],
+  "existing_json_content": "{\n    \"products\": \".card-body\",\n    \"productsText\": \".card-body b\",\n    \"cart\": \"[routerlink*='cart']\",\n    \"orders\": \"button[routerlink*='myorders']\"\n}\n"
+}
