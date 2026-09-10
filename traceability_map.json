@@ -1,27 +1,3 @@
 {
-  "C95": {
-    "file_name": "tests/web/checkout/test_product_checkout.py",
-    "class_name": "",
-    "function_name": "test_product_checkout"
-  },
-  "C96": {
-    "file_name": "tests/web/login/test_invalid_login.py",
-    "class_name": "",
-    "function_name": "test_invalid_login"
-  },
-  "C97": {
-    "file_name": "tests/web/cart/test_add_remove_cart.py",
-    "class_name": "",
-    "function_name": "test_add_remove_cart"
-  },
-  "C98": {
-    "file_name": "tests/web/checkout/test_empty_cart_checkout.py",
-    "class_name": "",
-    "function_name": "test_empty_cart_checkout"
-  },
-  "C99": {
-    "file_name": "tests/web/cart/test_view_order_details.py",
-    "class_name": "",
-    "function_name": "test_view_order_details"
-  }
+ 
 }
