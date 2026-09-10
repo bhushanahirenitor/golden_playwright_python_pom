@@ -3,5 +3,5 @@
     "file_name": "tests/web/testlogin.py",
     "class_name": "",
     "function_name": "test_verify_user_login_C46"
-  },
+  }
 }
