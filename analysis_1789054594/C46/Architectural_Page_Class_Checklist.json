@@ -1,0 +1,76 @@
+{
+  "test_case_id": "C46",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Navigate to the login page",
+          "proposed_signature": "go_to()",
+          "detailed_requirements": "Navigate to the login page URL. Wait for the page to load and verify that key login page elements (such as username field, password field, or login button) are visible to confirm successful navigation.",
+          "implementation_checklist": [
+            "Navigate to URL from self.test_data['qa'] using self.page.goto()",
+            "Wait for page load state 'domcontentloaded' using self.page.wait_for_load_state()",
+            "Call self.scenario.a11y_analysis() for accessibility check",
+            "Wait for 'userName' field to be visible using self.page.locator()",
+            "Wait for 'password' field to be visible using self.page.locator()",
+            "Wait for 'signInbutton' to be visible using self.page.locator()",
+            "Verify that all key login elements are present and visible"
+          ],
+          "required_locator_keys": [
+            "userName",
+            "password",
+            "signInbutton"
+          ]
+        },
+        {
+          "intent": "Input username",
+          "proposed_signature": "input_username(username)",
+          "detailed_requirements": "Locate the username input field on the login page. Clear any existing text in the field. Input the provided username parameter into the field. Optionally verify that the text was entered correctly.",
+          "implementation_checklist": [
+            "Wait for 'userName' field to be visible using self.page.locator()",
+            "Clear existing text in 'userName' field using .clear() or .fill('')",
+            "Input username parameter into 'userName' field using self.page.locator(self.locators['userName']).fill(username)",
+            "Optionally get the input value from 'userName' field to verify text was entered correctly",
+            "Optionally assert that retrieved value matches the username parameter"
+          ],
+          "required_locator_keys": [
+            "userName"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Assert user is redirected to the dashboard",
+          "proposed_signature": "verify_dashboard_loaded()",
+          "detailed_requirements": "Wait for the dashboard page to load after login. Verify that the current URL matches the expected dashboard URL pattern. Assert that key dashboard elements (such as dashboard header, navigation menu, or welcome message) are visible to confirm successful redirection and page load.",
+          "implementation_checklist": [
+            "Wait for page to reach 'networkidle' state using self.page.wait_for_load_state('networkidle')",
+            "Wait for page to reach 'domcontentloaded' state using self.page.wait_for_load_state('domcontentloaded')",
+            "Get current URL using self.page.url",
+            "Assert current URL contains expected dashboard URL pattern (e.g., '/dashboard' or expected dashboard path)",
+            "Wait for 'dashboard_header' to be visible using self.page.locator(self.locators['dashboard_header']).wait_for(state='visible')",
+            "Assert 'dashboard_header' is visible using expect(self.page.locator(self.locators['dashboard_header'])).to_be_visible()",
+            "Wait for 'navigation_menu' to be visible using self.page.locator(self.locators['navigation_menu']).wait_for(state='visible')",
+            "Assert 'navigation_menu' is visible using expect(self.page.locator(self.locators['navigation_menu'])).to_be_visible()"
+          ],
+          "required_locator_keys": [
+            "dashboard_header",
+            "navigation_menu"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py"
+    }
+  ]
+}
