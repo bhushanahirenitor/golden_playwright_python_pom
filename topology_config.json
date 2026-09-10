@@ -1,5 +1,5 @@
 {
-  "shadow_branch_name": "shadow_repo_topology_1789023182",
+  "shadow_branch_name": "shadow_repo_topology_1789029121",
   "global_context": {
     "aava_username": "Anshu",
     "repo_owner": "bhushanahirenitor",
@@ -11,36 +11,31 @@
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "pages/page_objects",
-      "locators_path": "pages/locators",
-      "test_cases_steps_scripts_map_path": ""
+      "locators_path": "pages/locators"
     },
     "windows": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": "",
-      "test_cases_steps_scripts_map_path": ""
+      "locators_path": ""
     },
     "android": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": "",
-      "test_cases_steps_scripts_map_path": ""
+      "locators_path": ""
     },
     "ios": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": "",
-      "test_cases_steps_scripts_map_path": ""
+      "locators_path": ""
     },
     "mac": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": "",
-      "test_cases_steps_scripts_map_path": ""
+      "locators_path": ""
     }
   }
 }
