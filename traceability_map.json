@@ -23,5 +23,25 @@
     "file_name": "tests/web/cart/test_view_order_details.py",
     "class_name": "",
     "function_name": "test_view_order_details"
+  },
+  "C47": {
+    "file_name": "tests/windows/hpx_rebranding/scripts/feedback/test_suite_01_feedback.py",
+    "class_name": "TestFeedback",
+    "function_name": "test_search_and_verify_cart"
+  },
+  "C48": {
+    "file_name": "tests/web/test_suite_01_web.py",
+    "class_name": "TestSuite01Web",
+    "function_name": "test_valid_login"
+  },
+  "C49": {
+    "file_name": "tests/web/test_suite_02_web.py",
+    "class_name": "TestSuite02Web",
+    "function_name": "test_suite_02_web"
+  },
+  "C52": {
+    "file_name": "tests/web/test_suite_05_web.py",
+    "class_name": "TestSuite05Web",
+    "function_name": "test_complete_order_flow"
   }
 }
