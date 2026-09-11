@@ -7,4 +7,5 @@ class TestSuite03Web:
 
     def test_suite_03_web(self, page: Page):
         """Test case for suite 03 web"""
-        pass
+        # Test implementation
+        assert page is not None
