@@ -1,0 +1,84 @@
+{
+  "python_file_path": "pageObjects/web/orders_review_page.py",
+  "missing_methods": [
+    {
+      "intent": "Search and select country",
+      "proposed_signature": "search_country_and_select(country_name)",
+      "detailed_requirements": "Search for a country in the country selection field and select it. Wait for country search/dropdown field to be visible. Input the country name into the search field. Wait for country suggestions/results to appear. Locate and click on the matching country from the results. Wait for country to be selected and displayed.",
+      "implementation_checklist": [
+        "Wait for 'country' field to be visible using page.locator(self.locators['country']).wait_for()",
+        "Clear any existing text in 'country' field if needed",
+        "Input country_name into 'country' field using page.locator(self.locators['country']).press_sequentially(country_name, delay=100)",
+        "Wait for 'dropdown' element to be visible using page.locator(self.locators['dropdown']).wait_for()",
+        "Get count of button elements within 'dropdown' using page.locator(self.locators['dropdown']).locator('button').count()",
+        "Iterate through each button in 'dropdown' to find matching country_name",
+        "For each button, get text_content() and compare with country_name.strip()",
+        "Click the matching button using page.locator(self.locators['dropdown']).locator('button').nth(i).click()",
+        "Wait for 'dropdown' to disappear or 'country' field to reflect selected value"
+      ],
+      "required_locator_keys": [
+        "country",
+        "dropdown"
+      ]
+    },
+    {
+      "intent": "Submit order and get order ID",
+      "proposed_signature": "submit_and_get_order_id()",
+      "detailed_requirements": "Submit the order and retrieve the generated order ID. Wait for submit/place order button to be clickable and click it. Wait for order confirmation page/message to load. Locate and extract the order ID from the confirmation message or page. Return the order ID as a string.",
+      "implementation_checklist": [
+        "Wait for 'submit' button to be visible and clickable using page.locator(self.locators['submit']).wait_for()",
+        "Click 'submit' button using page.locator(self.locators['submit']).click()",
+        "Wait for 'orderConfirmationText' element to be visible using expect(self.page.locator(self.locators['orderConfirmationText'])).to_be_visible()",
+        "Verify 'orderConfirmationText' contains expected text using expect(self.page.locator(self.locators['orderConfirmationText'])).to_have_text(' Thankyou for the order. ')",
+        "Wait for 'orderId' element to be visible using page.locator(self.locators['orderId']).wait_for()",
+        "Extract order ID text using page.locator(self.locators['orderId']).text_content()",
+        "Store order_id using self.set_value('orderId', order_id)",
+        "Return order_id as string"
+      ],
+      "required_locator_keys": [
+        "submit",
+        "orderConfirmationText",
+        "orderId"
+      ]
+    },
+    {
+      "intent": "Select payment method",
+      "proposed_signature": "select_payment_method(payment_method)",
+      "detailed_requirements": "Select a payment method from available options. Wait for payment method section to be visible. Locate the specified payment method option (e.g., 'Credit Card', 'PayPal', 'Cash on Delivery'). Click on the payment method radio button or selection element. Wait for the payment method to be selected/highlighted.",
+      "implementation_checklist": [
+        "Wait for 'paymentMethodSection' or 'paymentMethodContainer' to be visible using page.locator(self.locators['paymentMethodSection']).wait_for()",
+        "Locate payment method option element matching payment_method parameter (e.g., 'paymentMethodCreditCard', 'paymentMethodPayPal', 'paymentMethodCOD')",
+        "Wait for specific payment method radio button or clickable element to be visible",
+        "Click the payment method element using page.locator(self.locators[payment_method_key]).click()",
+        "Wait for payment method to be selected by checking if element has 'checked' or 'selected' state",
+        "Optionally verify selection using expect(self.page.locator(self.locators[payment_method_key])).to_be_checked() or similar assertion"
+      ],
+      "required_locator_keys": [
+        "paymentMethodSection",
+        "paymentMethodCreditCard",
+        "paymentMethodPayPal",
+        "paymentMethodCOD",
+        "paymentMethodRadioButton"
+      ]
+    },
+    {
+      "intent": "Assert order confirmation message with order ID is visible",
+      "proposed_signature": "assert_order_confirmation_message_visible(order_id)",
+      "detailed_requirements": "Assert that the order confirmation message containing the order ID is visible. Wait for confirmation message element to be visible. Verify that the message text contains the provided order ID. Assert that the confirmation message element is displayed on the page. Return True if assertion passes, raise AssertionError if it fails.",
+      "implementation_checklist": [
+        "Wait for 'orderConfirmationText' element to be visible using page.locator(self.locators['orderConfirmationText']).wait_for()",
+        "Get text content from 'orderConfirmationText' using page.locator(self.locators['orderConfirmationText']).text_content()",
+        "Verify that retrieved text contains the provided order_id parameter",
+        "Assert 'orderConfirmationText' is visible using expect(self.page.locator(self.locators['orderConfirmationText'])).to_be_visible()",
+        "Optionally verify 'orderId' element displays the correct order_id using expect(self.page.locator(self.locators['orderId'])).to_have_text(order_id)",
+        "Return True if all assertions pass",
+        "Raise AssertionError with descriptive message if any assertion fails"
+      ],
+      "required_locator_keys": [
+        "orderConfirmationText",
+        "orderId"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass OrdersReviewPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"orders_review_page_locators.json\")\n\n    def search_country_and_select(self, country_code, country_name):\n        self.page.locator(self.locators[\"country\"]).press_sequentially(country_code, delay=100)\n        self.page.locator(self.locators[\"dropdown\"]).wait_for()\n        options_count = self.page.locator(self.locators[\"dropdown\"]).locator(\"button\").count()\n        for i in range(options_count):\n            text = self.page.locator(self.locators[\"dropdown\"]).locator(\"button\").nth(i).text_content()\n            if text and text.strip() == country_name:\n                self.page.locator(self.locators[\"dropdown\"]).locator(\"button\").nth(i).click()\n                break\n\n    def verify_email_id(self, username):\n        expect(self.page.locator(self.locators[\"emailId\"])).to_have_text(username)\n\n    def submit_and_get_order_id(self):\n        self.page.locator(self.locators[\"submit\"]).click()\n        expect(self.page.locator(self.locators[\"orderConfirmationText\"])).to_have_text(\" Thankyou for the order. \")\n        order_id = self.page.locator(self.locators[\"orderId\"]).text_content()\n        self.set_value(\"orderId\", order_id)\n"
+}
