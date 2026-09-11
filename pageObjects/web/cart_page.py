@@ -37,6 +37,11 @@ class CartPage(CommonPage):
         return True
 
     def click_checkout(self):
+        """Click the checkout button to proceed to checkout.
+        
+        Locates the checkout button by role and name, waits for it to be visible,
+        clicks it, takes a screenshot, and waits for navigation to complete.
+        """
         self.page.get_by_role("button", name="Checkout⟩").click()
         self.take_screenshot("checkout")
 
