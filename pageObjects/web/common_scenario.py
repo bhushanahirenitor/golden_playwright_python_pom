@@ -43,10 +43,8 @@ class CommonScenario:
                     data = json.load(file)
                     return data
                 except json.JSONDecodeError as json_error:
-                    raise json.JSONDecodeError(
-                        f"Invalid JSON format in file: {file_path}",
-                        json_error.doc,
-                        json_error.pos
-                    )
+                    error_message = f"Invalid JSON format in file: {file_path}. Error: {str(json_error)}"
+                    raise json.JSONDecodeError(error_message, json_error.doc, json_error.pos)
         except FileNotFoundError:
-            raise FileNotFoundError(f"File not found at specified path: {file_path}")
+            error_message = f"File not found at specified path: {file_path}"
+            raise FileNotFoundError(error_message)
