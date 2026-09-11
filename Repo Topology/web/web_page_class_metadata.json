@@ -1,0 +1,347 @@
+[
+  {
+    "file_path": "pageObjects/web/login_page.py",
+    "component": "login_page",
+    "dependencies": [
+      "common_page",
+      "json",
+      "os"
+    ],
+    "locator_keys": [
+      "userName",
+      "password",
+      "signInbutton"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "load_test_data",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "go_to",
+        "purpose": "Navigates to the QA environment login page and performs accessibility analysis after the page loads.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "valid_login",
+        "purpose": "Executes a complete login workflow by filling in username and password fields and clicking the sign-in button.",
+        "input_parameters": [
+          "username",
+          "password"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/common_scenario.py",
+    "component": "common_scenario",
+    "dependencies": [],
+    "locator_keys": [],
+    "exposed_functions": [
+      {
+        "signature": "take_screenshot",
+        "purpose": "Captures and attaches a screenshot with a given name for test documentation",
+        "input_parameters": [
+          "name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "hooks",
+        "purpose": "Executes custom hook logic during test scenario lifecycle",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "set_value",
+        "purpose": "Stores a value in the scenario's shared data map using a key",
+        "input_parameters": [
+          "key",
+          "value"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "get_value",
+        "purpose": "Retrieves a previously stored value from the scenario's shared data map by key",
+        "input_parameters": [
+          "key"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "a11y_analysis",
+        "purpose": "Performs accessibility analysis on the current page state",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/common_page.py",
+    "component": "common_page",
+    "dependencies": [
+      "common_scenario"
+    ],
+    "locator_keys": [],
+    "exposed_functions": [
+      {
+        "signature": "get_value",
+        "purpose": "Retrieves a stored value from the scenario context using the provided key",
+        "input_parameters": [
+          "key"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "set_value",
+        "purpose": "Stores a value in the scenario context with the specified key",
+        "input_parameters": [
+          "key",
+          "value"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "take_screenshot",
+        "purpose": "Captures a screenshot with the given name for test documentation or debugging",
+        "input_parameters": [
+          "name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/cart_page.py",
+    "component": "cart_page",
+    "dependencies": [
+      "common_page",
+      "json",
+      "os",
+      "playwright.sync_api"
+    ],
+    "locator_keys": [],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_product_is_displayed",
+        "purpose": "Validates that a specific product appears in the cart by checking its visibility on the page.",
+        "input_parameters": [
+          "product_name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_checkout",
+        "purpose": "Initiates the checkout process by clicking the checkout button and capturing a screenshot.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/dashboard_page.py",
+    "component": "dashboard_page",
+    "dependencies": [
+      "common_page",
+      "json",
+      "os",
+      "playwright.sync_api"
+    ],
+    "locator_keys": [
+      "products",
+      "orders",
+      "cart"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "search_product_add_cart",
+        "purpose": "Searches for a specific product by name on the dashboard and adds it to the shopping cart by clicking the Add To Cart button.",
+        "input_parameters": [
+          "product_name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "navigate_to_orders",
+        "purpose": "Navigates the user from the dashboard to the orders page to view order history and status.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "navigate_to_cart",
+        "purpose": "Navigates the user from the dashboard to the shopping cart page to review items and proceed to checkout.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/orders_history_page.py",
+    "component": "orders_history_page",
+    "dependencies": [
+      "common_page",
+      "json",
+      "os",
+      "playwright.sync_api"
+    ],
+    "locator_keys": [
+      "orderdIdDetail",
+      "BTN_View",
+      "rows"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "search_order_and_select",
+        "purpose": "Searches through the orders history table to find and select a specific order by matching the order ID stored in the scenario context.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "get_order_id",
+        "purpose": "Retrieves and returns the order ID text from the order detail view.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/orders_review_page.py",
+    "component": "orders_review_page",
+    "dependencies": [
+      "common_page",
+      "json",
+      "os",
+      "playwright.sync_api"
+    ],
+    "locator_keys": [
+      "dropdown",
+      "country",
+      "emailId",
+      "orderConfirmationText",
+      "orderId",
+      "submit"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "search_country_and_select",
+        "purpose": "Searches for and selects a shipping country from a dropdown by entering a country code and matching the country name.",
+        "input_parameters": [
+          "country_code",
+          "country_name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_email_id",
+        "purpose": "Validates that the displayed email address matches the expected username.",
+        "input_parameters": [
+          "username"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "submit_and_get_order_id",
+        "purpose": "Submits the order, verifies the confirmation message, extracts and stores the generated order ID.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  }
+]
