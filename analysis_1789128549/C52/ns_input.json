@@ -1,0 +1,66 @@
+{
+  "test_script_path": "tests/web/test_suite_05_web.py",
+  "top_5_reference_file": "analysis_1789128549/C52/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Navigate to the application",
+      "label": "",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Login with valid credentials",
+      "label": "",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Search for product and add to cart",
+      "label": "",
+      "mapped_function": "search_product_add_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to cart",
+      "label": "",
+      "mapped_function": "navigate_to_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Verify product is displayed in cart",
+      "label": "",
+      "mapped_function": "verify_product_is_displayed",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Click checkout button",
+      "label": "",
+      "mapped_function": "click_checkout",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Search and select country",
+      "label": "",
+      "mapped_function": "search_country_and_select",
+      "page_object_name": "ordersReviewPage"
+    },
+    {
+      "intent": "Select payment method",
+      "label": "",
+      "mapped_function": "select_payment_method",
+      "page_object_name": "ordersReviewPage"
+    },
+    {
+      "intent": "Submit order and get order ID",
+      "label": "",
+      "mapped_function": "submit_and_get_order_id",
+      "page_object_name": "ordersReviewPage"
+    },
+    {
+      "intent": "Assert order confirmation message with order ID is visible",
+      "label": "",
+      "mapped_function": "assert_order_confirmation_message_visible",
+      "page_object_name": "ordersReviewPage"
+    }
+  ]
+}
