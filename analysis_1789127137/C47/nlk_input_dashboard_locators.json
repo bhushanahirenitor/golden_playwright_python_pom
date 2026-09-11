@@ -1,0 +1,16 @@
+{
+  "ui_map_file_path": "locators/web/dashboard_locators.json",
+  "missing_locators": [
+    "search_input",
+    "search_button",
+    "search_results",
+    "products",
+    "add_to_cart_button",
+    "cart_confirmation_message",
+    "cart_badge_count",
+    "cart",
+    "cart_page_header",
+    "cart_items_container"
+  ],
+  "existing_json_content": "{\n    \"products\": \".card-body\",\n    \"productsText\": \".card-body b\",\n    \"cart\": \"[routerlink*='cart']\",\n    \"orders\": \"button[routerlink*='myorders']\"\n}\n"
+}
