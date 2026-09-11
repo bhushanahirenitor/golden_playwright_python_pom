@@ -15,6 +15,15 @@ def load_test_data():
 
 class LoginPage(CommonPage):
     def __init__(self, page, scenario):
+        """Initialize the LoginPage class with the WebDriver instance.
+        
+        Args:
+            page: The Playwright page object for browser interaction.
+            scenario: The scenario object for test context and accessibility analysis.
+        
+        This method initializes the parent CommonPage class, loads locators from
+        'login_page_locators.json', and loads test data from 'test_data.json'.
+        """
         super().__init__(page, scenario)
         self.locators = load_locator("login_page_locators.json")
         self.test_data = load_test_data()
