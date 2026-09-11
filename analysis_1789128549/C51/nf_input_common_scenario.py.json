@@ -30,5 +30,6 @@
       "required_locator_keys": []
     }
   ],
-  "existing_python_content": "class CommonScenario:\n    def __init__(self, page, request):\n        self.page = page\n        self.request = request\n        self.my_map = {}\n\n    def take_screenshot(self, name: str):\n        # Placeholder for screenshot attachment logic\n        pass\n\n    def hooks(self):\n        print(\"hook from the scenario page\")\n\n    def set_value(self, key: str, value: str):\n        self.my_map[key] = value\n\n    def get_value(self, key: str):\n        return self.my_map.get(key)\n\n    def a11y_analysis(self):\n        # Placeholder for accessibility analysis\n        pass\n"
+  "existing_python_content": "class CommonScenario:\n    def __init__(self, page, request):\n        self.page = page\n        self.request = request\n        self.my_map = {}\n\n    def take_screenshot(self, name: str):\n        # Placeholder for screenshot attachment logic\n        pass\n\n    def hooks(self):\n        print(\"hook from the scenario page\")\n\n    def set_value(self, key: str, value: str):\n        self.my_map[key] = value\n\n    def get_value(self, key: str):\n        return self.my_map.get(key)\n\n    def a11y_analysis(self):\n        # Placeholder for accessibility analysis\n        pass\n",
+  "previous_feedback": "The __init__ method signature does not match requirements. Expected '__init__(self, driver)' but found '__init__(self, page, request)'. The proposed signature specified 'driver' parameter, but implementation uses 'page' and 'request' parameters instead."
 }
