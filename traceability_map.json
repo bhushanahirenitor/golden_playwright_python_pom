@@ -30,8 +30,8 @@
     "function_name": "test_search_and_verify_cart"
   },
   "C48": {
-    "file_name": "tests/windows/hpx_rebranding/scripts/feedback/test_suite_02_feedback.py",
-    "class_name": "TestFeedback",
-    "function_name": "test_feedback_flow"
+    "file_name": "tests/web/test_suite_01_web.py",
+    "class_name": "TestSuite01Web",
+    "function_name": "test_valid_login"
   }
 }
