@@ -1,0 +1,11 @@
+{
+  "test_case_id": "C50",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [],
+    "pages_updated": [],
+    "pages_created": [],
+    "flow_container_updated": [],
+    "test_script_created": []
+  }
+}
