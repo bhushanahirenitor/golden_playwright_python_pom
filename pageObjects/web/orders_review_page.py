@@ -32,3 +32,41 @@ class OrdersReviewPage(CommonPage):
         expect(self.page.locator(self.locators["orderConfirmationText"])).to_have_text(" Thankyou for the order. ")
         order_id = self.page.locator(self.locators["orderId"]).text_content()
         self.set_value("orderId", order_id)
+
+    def select_payment_method(self, payment_method):
+        """Select a payment method from available options.
+        
+        Args:
+            payment_method (str): The payment method to select (e.g., 'Credit Card', 'PayPal', 'COD').
+        """
+        self.page.locator(self.locators["paymentMethodSection"]).wait_for()
+        payment_method_map = {
+            "Credit Card": "paymentMethodCreditCard",
+            "PayPal": "paymentMethodPayPal",
+            "COD": "paymentMethodCOD",
+            "Cash on Delivery": "paymentMethodCOD"
+        }
+        payment_method_key = payment_method_map.get(payment_method, "paymentMethodRadioButton")
+        self.page.locator(self.locators[payment_method_key]).wait_for()
+        self.page.locator(self.locators[payment_method_key]).click()
+        expect(self.page.locator(self.locators[payment_method_key])).to_be_checked()
+
+    def assert_order_confirmation_message_visible(self, order_id):
+        """Assert that the order confirmation message containing the order ID is visible.
+        
+        Args:
+            order_id (str): The order ID to verify in the confirmation message.
+        
+        Returns:
+            bool: True if assertion passes.
+        
+        Raises:
+            AssertionError: If the confirmation message or order ID is not visible or does not match.
+        """
+        self.page.locator(self.locators["orderConfirmationText"]).wait_for()
+        confirmation_text = self.page.locator(self.locators["orderConfirmationText"]).text_content()
+        if order_id not in confirmation_text:
+            raise AssertionError(f"Order ID '{order_id}' not found in confirmation message: '{confirmation_text}'")
+        expect(self.page.locator(self.locators["orderConfirmationText"])).to_be_visible()
+        expect(self.page.locator(self.locators["orderId"])).to_have_text(order_id)
+        return True
