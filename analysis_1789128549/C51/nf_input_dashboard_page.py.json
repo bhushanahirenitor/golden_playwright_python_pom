@@ -1,0 +1,57 @@
+{
+  "python_file_path": "pageObjects/web/dashboard_page.py",
+  "missing_methods": [
+    {
+      "intent": "Initialize dashboard page object",
+      "proposed_signature": "__init__(driver)",
+      "detailed_requirements": "Initialize the DashboardPage class with the WebDriver instance. Set up locators for search field, product elements, add to cart buttons, and cart navigation link.",
+      "implementation_checklist": [
+        "Accept 'page' and 'scenario' parameters in __init__ method",
+        "Call super().__init__(page, scenario) to initialize parent CommonPage class",
+        "Load locators from 'dashboard_locators.json' using load_locator() function",
+        "Store loaded locators in self.locators attribute"
+      ],
+      "required_locator_keys": []
+    },
+    {
+      "intent": "Search for product and add to cart",
+      "proposed_signature": "search_product_add_cart(product_name)",
+      "detailed_requirements": "Enter the product name into the search field, wait for search results to load, locate the specific product in the results, and click the 'Add to Cart' button for that product. Verify that the product was successfully added (e.g., cart count increases or success message appears).",
+      "implementation_checklist": [
+        "Wait for 'search_input' to be visible using wait_for(state='visible')",
+        "Clear any existing text in 'search_input' using clear()",
+        "Fill 'search_input' with product_name using fill()",
+        "Click 'search_button' using click()",
+        "Wait for 'search_results' to be visible using wait_for(state='visible')",
+        "Locate product element using 'products' locator with has_text=product_name filter and .first selector",
+        "Wait for product element to be visible using wait_for(state='visible')",
+        "Locate 'Add To Cart' button within product element using locator('button', has_text=' Add To Cart')",
+        "Verify add to cart button is visible using expect().to_be_visible()",
+        "Click add to cart button using click()",
+        "Wait for 'cart_confirmation_message' to be visible using wait_for(state='visible', timeout=5000)"
+      ],
+      "required_locator_keys": [
+        "search_input",
+        "search_button",
+        "search_results",
+        "products",
+        "cart_confirmation_message"
+      ]
+    },
+    {
+      "intent": "Navigate to cart page",
+      "proposed_signature": "navigate_to_cart()",
+      "detailed_requirements": "Locate and click the cart icon or cart link in the dashboard navigation. Wait for the cart page to load completely.",
+      "implementation_checklist": [
+        "Locate 'cart' element using self.locators['cart']",
+        "Click 'cart' element using click()",
+        "Wait for page to reach 'networkidle' state using wait_for_load_state('networkidle')",
+        "Wait for page to reach 'domcontentloaded' state using wait_for_load_state('domcontentloaded')"
+      ],
+      "required_locator_keys": [
+        "cart"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass DashboardPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"dashboard_locators.json\")\n\n    def search_product_add_cart(self, product_name):\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        if add_cart_button.is_visible():\n            add_cart_button.click()\n\n    def navigate_to_orders(self):\n        self.page.locator(self.locators[\"orders\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n\n    def navigate_to_cart(self):\n        self.page.locator(self.locators[\"cart\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n        self.page.wait_for_load_state(\"domcontentloaded\")\n\n    def search_product_and_add_to_cart(self, product_name):\n        \"\"\"Search for a product by name and add it to the cart.\n        \n        This method performs a complete search workflow: waits for the search input to be visible,\n        clears any existing text, enters the product name, triggers the search, waits for results,\n        locates the specific product, clicks its 'Add to Cart' button, and waits for confirmation.\n        \n        Args:\n            product_name (str): The name of the product to search for and add to cart.\n        \n        Returns:\n            None\n        \"\"\"\n        self.page.locator(self.locators[\"search_input\"]).wait_for(state=\"visible\")\n        self.page.locator(self.locators[\"search_input\"]).clear()\n        self.page.locator(self.locators[\"search_input\"]).fill(product_name)\n        self.page.locator(self.locators[\"search_button\"]).click()\n        self.page.locator(self.locators[\"search_results\"]).wait_for(state=\"visible\")\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        add_cart_button.click()\n        self.page.locator(self.locators[\"cart_confirmation_message\"]).wait_for(state=\"visible\", timeout=5000)\n"
+}
