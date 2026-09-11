@@ -4,5 +4,12 @@
     "cart": "[routerlink*='cart']",
     "orders": "button[routerlink*='myorders']",
     "checkout": "text=Checkout",
-    "cart_items_container": "TBD_cart_items_container"
+    "cart_items_container": "TBD_cart_items_container",
+    "product_name_heading": "TBD_product_name_heading",
+    "quantity_control_input": "TBD_quantity_control_input",
+    "quantity_increment_button": "TBD_quantity_increment_button",
+    "quantity_decrement_button": "TBD_quantity_decrement_button",
+    "product_price": "TBD_product_price",
+    "total_price_display": "TBD_total_price_display",
+    "loading_spinner": "TBD_loading_spinner"
 }
