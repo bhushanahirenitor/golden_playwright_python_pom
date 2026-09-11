@@ -28,19 +28,23 @@ class LoginPage(CommonPage):
         self.locators = load_locator("login_page_locators.json")
         self.test_data = load_test_data()
 
-    def go_to(self):
-        """Navigate to the login page and verify key elements are visible.
+    def go_to(self, url=None):
+        """Navigate to the application URL and wait for the page to load completely.
         
-        This method navigates to the login page URL from test data, waits for the page
-        to load completely, performs accessibility analysis, and verifies that the username
-        field, password field, and sign-in button are visible.
+        Args:
+            url (str, optional): The URL to navigate to. If not provided, uses the default
+                                 URL from test data.
+        
+        This method navigates to the specified URL, waits for the DOM content to load,
+        performs accessibility analysis, and waits for the network to become idle to
+        ensure the page is fully loaded.
         """
-        self.page.goto(self.test_data["qa"])
+        if url is None:
+            url = self.test_data["qa"]
+        self.page.goto(url)
         self.page.wait_for_load_state("domcontentloaded")
         self.scenario.a11y_analysis()
-        self.page.locator(self.locators["userName"]).wait_for(state="visible")
-        self.page.locator(self.locators["password"]).wait_for(state="visible")
-        self.page.locator(self.locators["signInbutton"]).wait_for(state="visible")
+        self.page.wait_for_load_state("networkidle")
 
     def valid_login(self, username, password):
         """Perform a valid login with the provided username and password.
