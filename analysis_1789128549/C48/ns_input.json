@@ -1,0 +1,24 @@
+{
+  "test_script_path": "tests/web/test_suite_01_web.py",
+  "top_5_reference_file": "analysis_1789128549/C48/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Navigate to the login page",
+      "label": "",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Perform valid login with username and password",
+      "label": "",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Assert user is redirected to the home page",
+      "label": "",
+      "mapped_function": "verify_user_on_home_page",
+      "page_object_name": "homePage"
+    }
+  ]
+}
