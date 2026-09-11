@@ -33,5 +33,10 @@
     "file_name": "tests/web/test_suite_01_web.py",
     "class_name": "TestSuite01Web",
     "function_name": "test_valid_login"
+  },
+  "C49": {
+    "file_name": "tests/web/test_suite_02_web.py",
+    "class_name": "TestSuite02Web",
+    "function_name": "test_suite_02_web"
   }
 }
