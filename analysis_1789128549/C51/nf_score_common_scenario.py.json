@@ -1,0 +1,7 @@
+{
+  "score": 50,
+  "feedback": "The __init__ method signature does not match requirements. Expected '__init__(self, driver)' but found '__init__(self, page, request)'. The proposed signature specified 'driver' parameter, but implementation uses 'page' and 'request' parameters instead.",
+  "plateau_flag": false,
+  "target_file_path": "pageObjects/web/common_scenario.py",
+  "class_name": "CommonScenario"
+}
