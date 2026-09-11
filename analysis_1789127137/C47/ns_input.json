@@ -1,0 +1,24 @@
+{
+  "test_script_path": "tests/windows/hpx_rebranding/scripts/feedback/test_suite_01_feedback.py",
+  "top_5_reference_file": "analysis_1789127137/C47/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Search for product and add to cart",
+      "label": "",
+      "mapped_function": "search_product_and_add_to_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to cart",
+      "label": "",
+      "mapped_function": "navigate_to_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Verify product is displayed in cart",
+      "label": "",
+      "mapped_function": "verify_product_is_displayed",
+      "page_object_name": "cartPage"
+    }
+  ]
+}
