@@ -1,0 +1,34 @@
+{
+  "python_file_path": "pageObjects/web/common_scenario.py",
+  "missing_methods": [
+    {
+      "intent": "Initialize common scenario object",
+      "proposed_signature": "__init__(driver)",
+      "detailed_requirements": "Initialize the CommonScenario class with the WebDriver instance. This class should contain common utility methods that can be reused across multiple test scenarios, such as generic waits, screenshot capture, or browser navigation helpers.",
+      "implementation_checklist": [
+        "Accept 'driver' parameter in __init__ method",
+        "Store driver instance as self.driver attribute",
+        "Initialize self.my_map as empty dictionary for key-value storage",
+        "Optionally initialize any additional utility attributes (e.g., timeout values, default wait conditions)"
+      ],
+      "required_locator_keys": []
+    },
+    {
+      "intent": "Load test data from JSON file",
+      "proposed_signature": "load_test_data(file_path)",
+      "detailed_requirements": "Read and parse a JSON file from the provided file path. Return the parsed JSON data as a Python dictionary or list. Handle file not found errors and JSON parsing errors gracefully with appropriate error messages.",
+      "implementation_checklist": [
+        "Accept 'file_path' parameter as string",
+        "Wrap file operations in try-except block for FileNotFoundError",
+        "Open file using 'with open(file_path, 'r')' context manager",
+        "Wrap JSON parsing in try-except block for json.JSONDecodeError",
+        "Parse file content using json.load() method",
+        "Return parsed JSON data as dictionary or list",
+        "In FileNotFoundError exception handler, log or raise error with message indicating file not found at specified path",
+        "In JSONDecodeError exception handler, log or raise error with message indicating invalid JSON format in file"
+      ],
+      "required_locator_keys": []
+    }
+  ],
+  "existing_python_content": "class CommonScenario:\n    def __init__(self, page, request):\n        self.page = page\n        self.request = request\n        self.my_map = {}\n\n    def take_screenshot(self, name: str):\n        # Placeholder for screenshot attachment logic\n        pass\n\n    def hooks(self):\n        print(\"hook from the scenario page\")\n\n    def set_value(self, key: str, value: str):\n        self.my_map[key] = value\n\n    def get_value(self, key: str):\n        return self.my_map.get(key)\n\n    def a11y_analysis(self):\n        # Placeholder for accessibility analysis\n        pass\n"
+}
