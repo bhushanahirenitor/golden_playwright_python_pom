@@ -1,0 +1,7 @@
+{
+  "score": 100,
+  "feedback": "Perfect.",
+  "plateau_flag": false,
+  "target_file_path": "tests/windows/hpx_rebranding/scripts/feedback/test_suite_01_feedback.py",
+  "class_name": "TestFeedback"
+}
