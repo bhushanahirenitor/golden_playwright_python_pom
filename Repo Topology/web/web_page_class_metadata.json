@@ -9,6 +9,9 @@
       "playwright.sync_api"
     ],
     "locator_keys": [
+      "total_price_display",
+      "quantity_control_input",
+      "loading_spinner",
       "cart_items_container"
     ],
     "exposed_functions": [
@@ -51,8 +54,8 @@
       "common_page"
     ],
     "locator_keys": [
-      "signInbutton",
       "userName",
+      "signInbutton",
       "password"
     ],
     "exposed_functions": [
