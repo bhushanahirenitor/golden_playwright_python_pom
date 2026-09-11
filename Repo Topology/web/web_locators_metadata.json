@@ -1,0 +1,48 @@
+[
+  {
+    "file_path": "locators/web/cart_page_locators.json",
+    "locators": {
+      "cartProducts": "div li",
+      "productsText": ".card-body b",
+      "cart": "[routerlink*='cart']",
+      "orders": "button[routerlink*='myorders']",
+      "checkout": "text=Checkout"
+    }
+  },
+  {
+    "file_path": "locators/web/dashboard_locators.json",
+    "locators": {
+      "products": ".card-body",
+      "productsText": ".card-body b",
+      "cart": "[routerlink*='cart']",
+      "orders": "button[routerlink*='myorders']"
+    }
+  },
+  {
+    "file_path": "locators/web/login_page_locators.json",
+    "locators": {
+      "userName": "#userEmail",
+      "password": "#userPassword",
+      "signInbutton": "#login"
+    }
+  },
+  {
+    "file_path": "locators/web/orders_history_page_locators.json",
+    "locators": {
+      "rows": "tbody tr",
+      "BTN_View": "button:has-text('View')",
+      "orderdIdDetail": ".col-text"
+    }
+  },
+  {
+    "file_path": "locators/web/orders_review_page_locators.json",
+    "locators": {
+      "country": "[placeholder*='Country']",
+      "dropdown": ".ta-results",
+      "emailId": ".user__name [type='text']",
+      "submit": ".action__submit",
+      "orderConfirmationText": ".hero-primary",
+      "orderId": ".em-spacer-1 .ng-star-inserted"
+    }
+  }
+]
