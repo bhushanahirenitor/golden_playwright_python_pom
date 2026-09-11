@@ -1,0 +1,46 @@
+{
+  "test_case_id": "C48",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [
+      {
+        "path": "locators/web/home_page.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      },
+      {
+        "path": "locators/web/login_page_locators.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_updated": [
+      {
+        "path": "pageObjects/web/login_page.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_created": [
+      {
+        "path": "pageObjects/web/home_page.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "flow_container_updated": [],
+    "test_script_created": [
+      {
+        "path": "tests/web/test_suite_01_web.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "traceability_updated": [
+      {
+        "path": "traceability_map.json",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}
