@@ -1,5 +1,5 @@
 {
-  "shadow_branch_name": "shadow_repo_topology_1789126482",
+  "shadow_branch_name": "shadow_repo_topology_1789126698",
   "global_context": {
     "aava_username": "bhushan.ahire@nitorinfotech.com",
     "repo_owner": "bhushanahirenitor",
@@ -8,8 +8,8 @@
   },
   "platforms": {
     "web": {
-      "page_class_metadata_path": "Repo Topology/web/web_page_class_metadata.json",
-      "locators_metadata_path": "Repo Topology/web/web_locators_metadata.json",
+      "page_class_metadata_path": "",
+      "locators_metadata_path": "",
       "page_class_path": "pageObjects/web",
       "locators_path": "locators/web"
     },
