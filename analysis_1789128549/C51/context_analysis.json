@@ -1,0 +1,310 @@
+{
+  "test_case_id": "C51",
+  "files": [
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Initialize dashboard page object",
+          "proposed_signature": "__init__(driver)",
+          "detailed_requirements": "Initialize the DashboardPage class with the WebDriver instance. Set up locators for search field, product elements, add to cart buttons, and cart navigation link.",
+          "implementation_checklist": [
+            "Accept 'page' and 'scenario' parameters in __init__ method",
+            "Call super().__init__(page, scenario) to initialize parent CommonPage class",
+            "Load locators from 'dashboard_locators.json' using load_locator() function",
+            "Store loaded locators in self.locators attribute"
+          ],
+          "required_locator_keys": []
+        },
+        {
+          "intent": "Search for product and add to cart",
+          "proposed_signature": "search_product_add_cart(product_name)",
+          "detailed_requirements": "Enter the product name into the search field, wait for search results to load, locate the specific product in the results, and click the 'Add to Cart' button for that product. Verify that the product was successfully added (e.g., cart count increases or success message appears).",
+          "implementation_checklist": [
+            "Wait for 'search_input' to be visible using wait_for(state='visible')",
+            "Clear any existing text in 'search_input' using clear()",
+            "Fill 'search_input' with product_name using fill()",
+            "Click 'search_button' using click()",
+            "Wait for 'search_results' to be visible using wait_for(state='visible')",
+            "Locate product element using 'products' locator with has_text=product_name filter and .first selector",
+            "Wait for product element to be visible using wait_for(state='visible')",
+            "Locate 'Add To Cart' button within product element using locator('button', has_text=' Add To Cart')",
+            "Verify add to cart button is visible using expect().to_be_visible()",
+            "Click add to cart button using click()",
+            "Wait for 'cart_confirmation_message' to be visible using wait_for(state='visible', timeout=5000)"
+          ],
+          "required_locator_keys": [
+            "search_input",
+            "search_button",
+            "search_results",
+            "products",
+            "cart_confirmation_message"
+          ]
+        },
+        {
+          "intent": "Navigate to cart page",
+          "proposed_signature": "navigate_to_cart()",
+          "detailed_requirements": "Locate and click the cart icon or cart link in the dashboard navigation. Wait for the cart page to load completely.",
+          "implementation_checklist": [
+            "Locate 'cart' element using self.locators['cart']",
+            "Click 'cart' element using click()",
+            "Wait for page to reach 'networkidle' state using wait_for_load_state('networkidle')",
+            "Wait for page to reach 'domcontentloaded' state using wait_for_load_state('domcontentloaded')"
+          ],
+          "required_locator_keys": [
+            "cart"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py",
+      "locator_gaps": {
+        "ui_map_file": "dashboard_page.json",
+        "present_locators": [],
+        "missing_locators": [
+          "search_input",
+          "search_button",
+          "search_results",
+          "products",
+          "cart_confirmation_message",
+          "cart"
+        ]
+      }
+    },
+    {
+      "file": "common_scenario.py",
+      "class_name": "CommonScenario",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Initialize common scenario object",
+          "proposed_signature": "__init__(driver)",
+          "detailed_requirements": "Initialize the CommonScenario class with the WebDriver instance. This class should contain common utility methods that can be reused across multiple test scenarios, such as generic waits, screenshot capture, or browser navigation helpers.",
+          "implementation_checklist": [
+            "Accept 'driver' parameter in __init__ method",
+            "Store driver instance as self.driver attribute",
+            "Initialize self.my_map as empty dictionary for key-value storage",
+            "Optionally initialize any additional utility attributes (e.g., timeout values, default wait conditions)"
+          ],
+          "required_locator_keys": []
+        },
+        {
+          "intent": "Load test data from JSON file",
+          "proposed_signature": "load_test_data(file_path)",
+          "detailed_requirements": "Read and parse a JSON file from the provided file path. Return the parsed JSON data as a Python dictionary or list. Handle file not found errors and JSON parsing errors gracefully with appropriate error messages.",
+          "implementation_checklist": [
+            "Accept 'file_path' parameter as string",
+            "Wrap file operations in try-except block for FileNotFoundError",
+            "Open file using 'with open(file_path, 'r')' context manager",
+            "Wrap JSON parsing in try-except block for json.JSONDecodeError",
+            "Parse file content using json.load() method",
+            "Return parsed JSON data as dictionary or list",
+            "In FileNotFoundError exception handler, log or raise error with message indicating file not found at specified path",
+            "In JSONDecodeError exception handler, log or raise error with message indicating invalid JSON format in file"
+          ],
+          "required_locator_keys": []
+        }
+      ],
+      "path": "pageObjects/web/common_scenario.py",
+      "locator_gaps": {
+        "ui_map_file": "common_scenario.json",
+        "present_locators": [],
+        "missing_locators": []
+      }
+    },
+    {
+      "file": "cart_page.py",
+      "class_name": "CartPage",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Initialize cart page object",
+          "proposed_signature": "__init__(driver)",
+          "detailed_requirements": "Initialize the CartPage class with the WebDriver instance. Set up locators for product list, product names, quantity controls, price elements, and total price display.",
+          "implementation_checklist": [
+            "Accept 'page' and 'scenario' parameters (matching existing pattern)",
+            "Call super().__init__(page, scenario) to initialize CommonPage",
+            "Load locators from 'cart_page_locators.json' using load_locator() function",
+            "Store locators in self.locators attribute"
+          ],
+          "required_locator_keys": [
+            "cart_items_container",
+            "product_name_heading",
+            "quantity_control_input",
+            "quantity_increment_button",
+            "quantity_decrement_button",
+            "product_price",
+            "total_price_display"
+          ]
+        },
+        {
+          "intent": "Verify product is displayed in cart",
+          "proposed_signature": "verify_product_is_displayed(product_name)",
+          "detailed_requirements": "Search for the product by name in the cart items list. Assert that the product element is visible and displayed. Return True if found, raise assertion error if not found.",
+          "implementation_checklist": [
+            "Wait for 'cart_items_container' to be visible using wait_for(state='visible')",
+            "Locate product heading by role using page.get_by_role('heading', name=product_name)",
+            "Wait for selected product heading to be visible using wait_for(state='visible')",
+            "Assert selected product is visible using expect().to_be_visible()",
+            "Return True if assertion passes"
+          ],
+          "required_locator_keys": [
+            "cart_items_container"
+          ]
+        },
+        {
+          "intent": "Locate product quantity control",
+          "proposed_signature": "locate_quantity_control(product_name)",
+          "detailed_requirements": "Find the specific product in the cart by name and locate its associated quantity control element (input field, dropdown, or increment/decrement buttons). Return the WebElement for the quantity control.",
+          "implementation_checklist": [
+            "Wait for 'cart_items_container' to be visible using wait_for(state='visible')",
+            "Locate product heading by role using page.get_by_role('heading', name=product_name)",
+            "Wait for selected product heading to be visible using wait_for(state='visible')",
+            "From product heading, navigate to parent container to find associated quantity control",
+            "Locate 'quantity_control_input' within the product container using locator",
+            "Wait for quantity control element to be visible using wait_for(state='visible')",
+            "Return the quantity control locator element"
+          ],
+          "required_locator_keys": [
+            "cart_items_container",
+            "quantity_control_input"
+          ]
+        },
+        {
+          "intent": "Update product quantity",
+          "proposed_signature": "update_product_quantity(product_name, new_quantity)",
+          "detailed_requirements": "Locate the quantity control for the specified product. Clear the current quantity value and enter the new quantity. If using increment/decrement buttons, click the appropriate button the required number of times. Wait for the cart to update (e.g., wait for loading spinner to disappear or for price to recalculate).",
+          "implementation_checklist": [
+            "Wait for 'cart_items_container' to be visible using wait_for(state='visible')",
+            "Locate product heading by role using page.get_by_role('heading', name=product_name)",
+            "Wait for selected product heading to be visible using wait_for(state='visible')",
+            "From product heading, navigate to parent container to find associated quantity control",
+            "Locate 'quantity_control_input' within the product container using locator",
+            "Wait for quantity control element to be visible using wait_for(state='visible')",
+            "Clear the quantity control input using clear()",
+            "Enter new_quantity value into quantity control using fill(str(new_quantity))",
+            "Wait for 'loading_spinner' to be hidden using wait_for(state='hidden') if present",
+            "Wait for 'total_price_display' to be visible using wait_for(state='visible')",
+            "Take screenshot using self.take_screenshot('quantity_updated')"
+          ],
+          "required_locator_keys": [
+            "cart_items_container",
+            "quantity_control_input",
+            "loading_spinner",
+            "total_price_display"
+          ]
+        },
+        {
+          "intent": "Assert total price reflects updated quantity",
+          "proposed_signature": "verify_total_price(expected_total)",
+          "detailed_requirements": "Locate the total price element in the cart. Extract the numeric value from the price text (handling currency symbols and formatting). Assert that the displayed total price matches the expected total price. Provide a clear error message if the assertion fails, including both expected and actual values.",
+          "implementation_checklist": [
+            "Wait for 'total_price_display' to be visible using wait_for(state='visible')",
+            "Get text from 'total_price_display' using inner_text()",
+            "Extract numeric value from price text by removing currency symbols and formatting (strip '$', ',', whitespace)",
+            "Convert extracted text to float for comparison",
+            "Convert expected_total to float for comparison",
+            "Assert that extracted price equals expected_total",
+            "If assertion fails, raise AssertionError with message including both expected and actual values",
+            "Take screenshot using self.take_screenshot('total_price_verified')"
+          ],
+          "required_locator_keys": [
+            "total_price_display"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/cart_page.py",
+      "locator_gaps": {
+        "ui_map_file": "cart_page.json",
+        "present_locators": [],
+        "missing_locators": [
+          "cart_items_container",
+          "product_name_heading",
+          "quantity_control_input",
+          "quantity_increment_button",
+          "quantity_decrement_button",
+          "product_price",
+          "total_price_display",
+          "loading_spinner"
+        ]
+      }
+    },
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Initialize login page object",
+          "proposed_signature": "__init__(driver)",
+          "detailed_requirements": "Initialize the LoginPage class with the WebDriver instance. Set up any necessary locators for username field, password field, and login button.",
+          "implementation_checklist": [
+            "Accept 'page' and 'scenario' parameters in constructor",
+            "Call parent class CommonPage.__init__(page, scenario) using super()",
+            "Load locators from 'login_page_locators.json' using load_locator() function",
+            "Store loaded locators in self.locators instance variable",
+            "Load test data from 'test_data.json' using load_test_data() function",
+            "Store loaded test data in self.test_data instance variable"
+          ],
+          "required_locator_keys": [
+            "userName",
+            "password",
+            "signInbutton"
+          ]
+        },
+        {
+          "intent": "Navigate to login page",
+          "proposed_signature": "go_to()",
+          "detailed_requirements": "Navigate to the login page URL. Wait for the page to load completely and verify that login form elements are visible.",
+          "implementation_checklist": [
+            "Navigate to URL from self.test_data['qa'] using self.page.goto()",
+            "Wait for page load state 'domcontentloaded' using self.page.wait_for_load_state()",
+            "Perform accessibility analysis using self.scenario.a11y_analysis()",
+            "Wait for 'userName' element to be visible using self.page.locator(self.locators['userName']).wait_for(state='visible')",
+            "Wait for 'password' element to be visible using self.page.locator(self.locators['password']).wait_for(state='visible')",
+            "Wait for 'signInbutton' element to be visible using self.page.locator(self.locators['signInbutton']).wait_for(state='visible')"
+          ],
+          "required_locator_keys": [
+            "userName",
+            "password",
+            "signInbutton"
+          ]
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "proposed_signature": "valid_login(username, password)",
+          "detailed_requirements": "Enter the provided username into the username field, enter the provided password into the password field, and click the login button. Wait for successful navigation to the dashboard or home page.",
+          "implementation_checklist": [
+            "Wait for 'userName' element to be visible using self.page.locator(self.locators['userName']).wait_for(state='visible')",
+            "Fill 'userName' element with username parameter using self.page.locator(self.locators['userName']).fill(username)",
+            "Wait for 'password' element to be visible using self.page.locator(self.locators['password']).wait_for(state='visible')",
+            "Fill 'password' element with password parameter using self.page.locator(self.locators['password']).fill(password)",
+            "Wait for 'signInbutton' element to be visible using self.page.locator(self.locators['signInbutton']).wait_for(state='visible')",
+            "Click 'signInbutton' element using self.page.locator(self.locators['signInbutton']).click()",
+            "Wait for page load state 'networkidle' using self.page.wait_for_load_state('networkidle')"
+          ],
+          "required_locator_keys": [
+            "userName",
+            "password",
+            "signInbutton"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/login_page.py",
+      "locator_gaps": {
+        "ui_map_file": "login_page.json",
+        "present_locators": [],
+        "missing_locators": [
+          "userName",
+          "password",
+          "signInbutton"
+        ]
+      }
+    }
+  ]
+}
