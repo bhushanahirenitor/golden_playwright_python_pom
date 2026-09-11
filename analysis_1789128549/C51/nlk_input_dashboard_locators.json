@@ -1,0 +1,12 @@
+{
+  "ui_map_file_path": "locators/web/dashboard_locators.json",
+  "missing_locators": [
+    "search_input",
+    "search_button",
+    "search_results",
+    "products",
+    "cart_confirmation_message",
+    "cart"
+  ],
+  "existing_json_content": "{\n    \"products\": \".card-body\",\n    \"productsText\": \".card-body b\",\n    \"cart\": \"[routerlink*='cart']\",\n    \"orders\": \"button[routerlink*='myorders']\",\n    \"search_input\": \"TBD_search_input\",\n    \"search_button\": \"TBD_search_button\",\n    \"search_results\": \"TBD_search_results\",\n    \"add_to_cart_button\": \"TBD_add_to_cart_button\",\n    \"cart_confirmation_message\": \"TBD_cart_confirmation_message\",\n    \"cart_badge_count\": \"TBD_cart_badge_count\",\n    \"cart_page_header\": \"TBD_cart_page_header\",\n    \"cart_items_container\": \"TBD_cart_items_container\"\n}"
+}
