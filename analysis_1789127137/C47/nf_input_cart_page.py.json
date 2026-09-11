@@ -1,0 +1,21 @@
+{
+  "python_file_path": "pageObjects/web/cart_page.py",
+  "missing_methods": [
+    {
+      "intent": "Verify product is displayed in cart",
+      "proposed_signature": "verify_product_is_displayed(product_name)",
+      "detailed_requirements": "Wait for the cart items container to be visible, search for the product by product_name in the cart items list, verify that the product element is displayed and visible, and return True if found or raise an assertion error if not found.",
+      "implementation_checklist": [
+        "Wait for 'cart_items_container' to be visible using wait_for(state='visible')",
+        "Locate the product heading element by role 'heading' with name matching product_name using page.get_by_role('heading', name=product_name)",
+        "Wait for the product heading element to be visible using wait_for(state='visible')",
+        "Verify the product heading element is visible using expect().to_be_visible()",
+        "Return True if all assertions pass"
+      ],
+      "required_locator_keys": [
+        "cart_items_container"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass CartPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"cart_page_locators.json\")\n\n    def verify_product_is_displayed(self, product_name):\n        selected_product = self.page.get_by_role(\"heading\", name=product_name)\n        selected_product.wait_for(state=\"visible\")\n        expect(selected_product).to_be_visible()\n\n    def click_checkout(self):\n        self.page.get_by_role(\"button\", name=\"Checkout\u276f\").click()\n        self.take_screenshot(\"checkout\")\n"
+}
