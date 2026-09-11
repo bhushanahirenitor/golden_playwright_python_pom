@@ -4,5 +4,10 @@
     "emailId": ".user__name [type='text']",
     "submit": ".action__submit",
     "orderConfirmationText": ".hero-primary",
-    "orderId": ".em-spacer-1 .ng-star-inserted"
+    "orderId": ".em-spacer-1 .ng-star-inserted",
+    "paymentMethodSection": "TBD_paymentMethodSection",
+    "paymentMethodCreditCard": "TBD_paymentMethodCreditCard",
+    "paymentMethodPayPal": "TBD_paymentMethodPayPal",
+    "paymentMethodCOD": "TBD_paymentMethodCOD",
+    "paymentMethodRadioButton": "TBD_paymentMethodRadioButton"
 }
