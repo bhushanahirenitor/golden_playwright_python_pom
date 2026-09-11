@@ -11,8 +11,8 @@
     "locator_keys": [
       "total_price_display",
       "quantity_control_input",
-      "loading_spinner",
-      "cart_items_container"
+      "cart_items_container",
+      "loading_spinner"
     ],
     "exposed_functions": [
       {
@@ -55,8 +55,8 @@
     ],
     "locator_keys": [
       "userName",
-      "signInbutton",
-      "password"
+      "password",
+      "signInbutton"
     ],
     "exposed_functions": [
       {
@@ -108,13 +108,13 @@
       "playwright.sync_api"
     ],
     "locator_keys": [
-      "orders",
       "cart_confirmation_message",
+      "products",
       "search_input",
+      "orders",
       "search_button",
       "cart",
-      "search_results",
-      "products"
+      "search_results"
     ],
     "exposed_functions": [
       {
@@ -305,6 +305,7 @@
     ],
     "locator_keys": [
       "orderConfirmationText",
+      "paymentMethodSection",
       "country",
       "emailId",
       "orderId",
