@@ -38,5 +38,10 @@
     "file_name": "tests/web/test_suite_02_web.py",
     "class_name": "TestSuite02Web",
     "function_name": "test_suite_02_web"
+  },
+  "C52": {
+    "file_name": "tests/web/test_suite_05_web.py",
+    "class_name": "TestSuite05Web",
+    "function_name": "test_complete_order_flow"
   }
 }
