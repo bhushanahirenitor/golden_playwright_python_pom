@@ -1,0 +1,78 @@
+{
+  "test_script_path": "tests/web/test_suite_04_web.py",
+  "top_5_reference_file": "analysis_1789128549/C51/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Load test data from JSON file",
+      "label": "",
+      "mapped_function": "load_test_data",
+      "page_object_name": "commonScenario"
+    },
+    {
+      "intent": "Initialize common scenario object",
+      "label": "",
+      "mapped_function": "__init__",
+      "page_object_name": "commonScenario"
+    },
+    {
+      "intent": "Initialize login page object",
+      "label": "",
+      "mapped_function": "__init__",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Initialize dashboard page object",
+      "label": "",
+      "mapped_function": "__init__",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Initialize cart page object",
+      "label": "",
+      "mapped_function": "__init__",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Navigate to login page",
+      "label": "",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Perform valid login with username and password",
+      "label": "",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Search for product and add to cart",
+      "label": "",
+      "mapped_function": "search_product_add_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to cart page",
+      "label": "",
+      "mapped_function": "navigate_to_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Verify product is displayed in cart",
+      "label": "",
+      "mapped_function": "verify_product_is_displayed",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Locate product quantity control",
+      "label": "",
+      "mapped_function": "locate_quantity_control",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Assert total price reflects updated quantity",
+      "label": "",
+      "mapped_function": "verify_total_price",
+      "page_object_name": "cartPage"
+    }
+  ]
+}
