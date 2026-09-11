@@ -1,0 +1,7 @@
+{
+  "ui_map_file_path": "locators/web/cart_page_locators.json",
+  "missing_locators": [
+    "cart_items_container"
+  ],
+  "existing_json_content": "{\n    \"cartProducts\": \"div li\",\n    \"productsText\": \".card-body b\",\n    \"cart\": \"[routerlink*='cart']\",\n    \"orders\": \"button[routerlink*='myorders']\",\n    \"checkout\": \"text=Checkout\",\n    \"cart_items_container\": \"TBD_cart_items_container\"\n}"
+}
