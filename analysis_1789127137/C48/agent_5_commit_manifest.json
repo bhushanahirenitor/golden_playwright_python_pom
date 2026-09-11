@@ -1,0 +1,23 @@
+{
+  "test_case_id": "C48",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [],
+    "pages_updated": [],
+    "pages_created": [],
+    "flow_container_updated": [],
+    "test_script_created": [
+      {
+        "path": "tests/windows/hpx_rebranding/scripts/feedback/test_suite_02_feedback.py",
+        "score": 20,
+        "exit_reason": "MAX_ITERATIONS"
+      }
+    ],
+    "traceability_updated": [
+      {
+        "path": "traceability_map.json",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}
