@@ -51,9 +51,9 @@
       "common_page"
     ],
     "locator_keys": [
+      "signInbutton",
       "userName",
-      "password",
-      "signInbutton"
+      "password"
     ],
     "exposed_functions": [
       {
