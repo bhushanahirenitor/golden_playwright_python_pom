@@ -1,0 +1,16 @@
+{
+  "ui_map_file_path": "locators/web/orders_review_page_locators.json",
+  "missing_locators": [
+    "country",
+    "dropdown",
+    "submit",
+    "orderConfirmationText",
+    "orderId",
+    "paymentMethodSection",
+    "paymentMethodCreditCard",
+    "paymentMethodPayPal",
+    "paymentMethodCOD",
+    "paymentMethodRadioButton"
+  ],
+  "existing_json_content": "{\n    \"country\": \"[placeholder*='Country']\",\n    \"dropdown\": \".ta-results\",\n    \"emailId\": \".user__name [type='text']\",\n    \"submit\": \".action__submit\",\n    \"orderConfirmationText\": \".hero-primary\",\n    \"orderId\": \".em-spacer-1 .ng-star-inserted\"\n}\n"
+}
