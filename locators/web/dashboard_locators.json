@@ -2,5 +2,13 @@
     "products": ".card-body",
     "productsText": ".card-body b",
     "cart": "[routerlink*='cart']",
-    "orders": "button[routerlink*='myorders']"
+    "orders": "button[routerlink*='myorders']",
+    "search_input": "TBD_search_input",
+    "search_button": "TBD_search_button",
+    "search_results": "TBD_search_results",
+    "add_to_cart_button": "TBD_add_to_cart_button",
+    "cart_confirmation_message": "TBD_cart_confirmation_message",
+    "cart_badge_count": "TBD_cart_badge_count",
+    "cart_page_header": "TBD_cart_page_header",
+    "cart_items_container": "TBD_cart_items_container"
 }
