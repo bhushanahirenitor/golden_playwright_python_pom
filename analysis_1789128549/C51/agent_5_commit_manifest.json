@@ -1,0 +1,43 @@
+{
+  "test_case_id": "C51",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [
+      {
+        "path": "locators/web/dashboard_locators.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      },
+      {
+        "path": "locators/web/cart_page_locators.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      },
+      {
+        "path": "locators/web/login_page_locators.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_updated": [
+      {
+        "path": "pageObjects/web/common_scenario.py",
+        "score": 50,
+        "exit_reason": "MAX_ITERATIONS"
+      },
+      {
+        "path": "pageObjects/web/cart_page.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      },
+      {
+        "path": "pageObjects/web/login_page.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_created": [],
+    "flow_container_updated": [],
+    "test_script_created": []
+  }
+}
