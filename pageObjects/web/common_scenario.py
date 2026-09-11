@@ -28,10 +28,10 @@ class CommonScenario:
         """Load and parse test data from a JSON file.
         
         Args:
-            file_path (str): The path to the JSON file to be loaded.
+            file_path: String path to the JSON file to be loaded.
             
         Returns:
-            dict or list: The parsed JSON data as a Python dictionary or list.
+            Parsed JSON data as a dictionary or list.
             
         Raises:
             FileNotFoundError: If the file does not exist at the specified path.
@@ -43,8 +43,10 @@ class CommonScenario:
                     data = json.load(file)
                     return data
                 except json.JSONDecodeError as json_error:
-                    error_message = f"Invalid JSON format in file: {file_path}. Error: {str(json_error)}"
-                    raise json.JSONDecodeError(error_message, json_error.doc, json_error.pos)
+                    raise json.JSONDecodeError(
+                        f"Invalid JSON format in file: {file_path}. Error: {str(json_error)}",
+                        json_error.doc,
+                        json_error.pos
+                    )
         except FileNotFoundError:
-            error_message = f"File not found at specified path: {file_path}"
-            raise FileNotFoundError(error_message)
+            raise FileNotFoundError(f"File not found at specified path: {file_path}")
