@@ -1,0 +1,92 @@
+{
+  "test_case_id": "C49",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the application",
+          "mapped_function": "go_to"
+        }
+      ],
+      "missing_methods": [],
+      "path": "login_page.py"
+    },
+    {
+      "file": "search_page.py",
+      "class_name": "SearchPage",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Click Search box",
+          "proposed_signature": "click_search_box()",
+          "detailed_requirements": "Wait for the search box element to be clickable and click it to activate the input field.",
+          "implementation_checklist": [
+            "Wait for 'search_box' to be clickable",
+            "Click 'search_box'"
+          ],
+          "required_locator_keys": [
+            "search_box"
+          ]
+        },
+        {
+          "intent": "Input product name",
+          "proposed_signature": "input_product_name(product_name)",
+          "detailed_requirements": "Wait for the search box input field to be visible, clear any existing text, and input the provided product_name string.",
+          "implementation_checklist": [
+            "Wait for 'search_box_input' to be visible",
+            "Clear 'search_box_input'",
+            "Send keys product_name to 'search_box_input'"
+          ],
+          "required_locator_keys": [
+            "search_box_input"
+          ]
+        },
+        {
+          "intent": "Click Search button",
+          "proposed_signature": "click_search_button()",
+          "detailed_requirements": "Wait for the search button element to be clickable and click it to execute the search.",
+          "implementation_checklist": [
+            "Wait for 'search_button' to be clickable",
+            "Click 'search_button'"
+          ],
+          "required_locator_keys": [
+            "search_button"
+          ]
+        },
+        {
+          "intent": "Verify product is displayed",
+          "proposed_signature": "verify_product_displayed(product_name)",
+          "detailed_requirements": "Wait for search results to load and verify that the specified product_name appears in the search results list. Return True if found, False otherwise.",
+          "implementation_checklist": [
+            "Wait for 'search_results_list' to be visible",
+            "Get all elements matching 'search_result_item'",
+            "Iterate through each 'search_result_item'",
+            "Get text from each 'search_result_item'",
+            "Compare text with product_name parameter",
+            "Return True if product_name found in any result item text, False otherwise"
+          ],
+          "required_locator_keys": [
+            "search_results_list",
+            "search_result_item"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/search_page.py",
+      "locator_gaps": {
+        "ui_map_file": "search_page.json",
+        "present_locators": [],
+        "missing_locators": [
+          "search_box",
+          "search_box_input",
+          "search_button",
+          "search_results_list",
+          "search_result_item"
+        ]
+      }
+    }
+  ]
+}
