@@ -1,0 +1,24 @@
+{
+  "python_file_path": "pageObjects/web/login_page.py",
+  "missing_methods": [
+    {
+      "intent": "Navigate to the application",
+      "proposed_signature": "go_to()",
+      "detailed_requirements": "Navigate to the application URL. This method should open the browser and load the login page of the application.",
+      "implementation_checklist": [
+        "Navigate to the application URL using self.page.goto() with URL from self.test_data['qa']",
+        "Wait for page load state 'domcontentloaded' using self.page.wait_for_load_state()",
+        "Perform accessibility analysis by calling self.scenario.a11y_analysis()",
+        "Wait for 'userName' element to be visible using self.page.locator(self.locators['userName']).wait_for(state='visible')",
+        "Wait for 'password' element to be visible using self.page.locator(self.locators['password']).wait_for(state='visible')",
+        "Wait for 'signInbutton' element to be visible using self.page.locator(self.locators['signInbutton']).wait_for(state='visible')"
+      ],
+      "required_locator_keys": [
+        "userName",
+        "password",
+        "signInbutton"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\ndef load_test_data():\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    with open(os.path.join(base_dir, \"testData\", \"web\", \"test_data.json\")) as f:\n        return json.load(f)\n\nclass LoginPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"login_page.json\")\n        self.test_data = load_test_data()\n\n    def go_to(self):\n        \"\"\"Navigate to the login page and verify key elements are visible.\n        \n        This method navigates to the login page URL from test data, waits for the page\n        to load, performs accessibility analysis, and verifies that the username field,\n        password field, and sign-in button are visible.\n        \"\"\"\n        self.page.goto(self.test_data[\"qa\"])\n        self.page.wait_for_load_state(\"domcontentloaded\")\n        self.scenario.a11y_analysis()\n        self.page.locator(self.locators[\"userName\"]).wait_for(state=\"visible\")\n        self.page.locator(self.locators[\"password\"]).wait_for(state=\"visible\")\n        self.page.locator(self.locators[\"signInbutton\"]).wait_for(state=\"visible\")\n\n    def valid_login(self, username, password):\n        \"\"\"Perform a valid login with the provided username and password.\n        \n        Args:\n            username (str): The username to enter in the username field.\n            password (str): The password to enter in the password field.\n        \n        This method waits for the username and password fields to be visible,\n        fills them with the provided credentials, clicks the sign-in button,\n        and waits for the network to be idle after login.\n        \"\"\"\n        self.page.locator(self.locators[\"userName\"]).wait_for(state=\"visible\")\n        self.page.locator(self.locators[\"userName\"]).fill(username)\n        self.page.locator(self.locators[\"password\"]).wait_for(state=\"visible\")\n        self.page.locator(self.locators[\"password\"]).fill(password)\n        self.page.locator(self.locators[\"signInbutton\"]).wait_for(state=\"visible\")\n        self.page.locator(self.locators[\"signInbutton\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n"
+}
