@@ -23,5 +23,10 @@
     "file_name": "tests/web/cart/test_view_order_details.py",
     "class_name": "",
     "function_name": "test_view_order_details"
+  },
+  "C48": {
+    "file_name": "tests/web/test_suite_01_web.py",
+    "class_name": "TestSuite01Web",
+    "function_name": "test_valid_login"
   }
 }
