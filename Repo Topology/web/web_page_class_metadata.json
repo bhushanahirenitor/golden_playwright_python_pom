@@ -242,8 +242,8 @@
     ],
     "locator_keys": [
       "userName",
-      "signInbutton",
-      "password"
+      "password",
+      "signInbutton"
     ],
     "exposed_functions": [
       {
@@ -337,6 +337,33 @@
       {
         "signature": "submit_and_get_order_id",
         "purpose": "Submits the order, verifies the confirmation message, extracts and stores the generated order ID.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/home_page.py",
+    "locator_keys": [
+      "home_page_main_content",
+      "home_page_logo"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_user_on_home_page",
+        "purpose": "Performs comprehensive validation that the user has successfully landed on the home page by checking URL patterns, logo visibility, main content presence, and page title.",
         "input_parameters": [],
         "output_parameters": [
           "Any"
