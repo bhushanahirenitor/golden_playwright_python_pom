@@ -51,5 +51,15 @@
       "home_page_logo": "TBD_home_page_logo",
       "home_page_main_content": "TBD_home_page_main_content"
     }
+  },
+  {
+    "file_path": "locators/web/search_page.json",
+    "locators": {
+      "search_box": "TBD_search_box",
+      "search_box_input": "TBD_search_box_input",
+      "search_button": "TBD_search_button",
+      "search_results_list": "TBD_search_results_list",
+      "search_result_item": "TBD_search_result_item"
+    }
   }
 ]
