@@ -8,7 +8,7 @@
   },
   "platforms": {
     "web": {
-      "page_class_metadata_path": "",
+      "page_class_metadata_path": "Repo Topology/web/web_page_class_metadata.json",
       "locators_metadata_path": "",
       "page_class_path": "pageObjects/web",
       "locators_path": "locators/web"
