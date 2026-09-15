@@ -370,5 +370,63 @@
         ]
       }
     ]
+  },
+  {
+    "file_path": "pageObjects/web/search_page.py",
+    "locator_keys": [
+      "search_button",
+      "search_result_item",
+      "search_box_input",
+      "search_box",
+      "search_results_list"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_search_box",
+        "purpose": "Activates the search input field by clicking the search box element.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_product_name",
+        "purpose": "Enters a product name into the search input field.",
+        "input_parameters": [
+          "product_name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_search_button",
+        "purpose": "Executes the search by clicking the search button.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_product_displayed",
+        "purpose": "Validates that a specific product appears in the search results.",
+        "input_parameters": [
+          "product_name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
   }
 ]
