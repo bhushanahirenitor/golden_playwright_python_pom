@@ -1,0 +1,180 @@
+{
+  "aava_config": {
+    "aava_username": "bhushan.ahire@nitorinfotech.com",
+    "repo_owner": "bhushanahirenitor",
+    "repo_name": "golden_playwright_python_pom",
+    "branch": "test-plawright",
+    "intent_path": "pageObjects/web",
+    "platform": "web",
+    "analysis_path": "analysis_1789466592/C50",
+    "test_script_path": "tests/web/test_suite_03_web.py",
+    "requires_flow_container": false,
+    "language": "python",
+    "framework": "playwright",
+    "traceability_map_path": "traceability_map.json",
+    "topology": {
+      "shadow_branch_name": "shadow_repo_topology_1789465873",
+      "global_context": {
+        "aava_username": "bhushan.ahire@nitorinfotech.com",
+        "repo_owner": "bhushanahirenitor",
+        "repo_name": "golden_playwright_python_pom",
+        "working_branch": "test-plawright"
+      },
+      "platforms": {
+        "web": {
+          "page_class_metadata_path": "Repo Topology/web/web_page_class_metadata.json",
+          "locators_metadata_path": "Repo Topology/web/web_locators_metadata.json",
+          "page_class_path": "pageObjects/web",
+          "locators_path": "locators/web",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "windows": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "android": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "ios": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "mac": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        }
+      }
+    }
+  },
+  "test_case_id": "C50",
+  "tiers": {
+    "Tier_1_Locators": [
+      {
+        "ui_map_file": "dashboard_page.json",
+        "page_class_file": "dashboard_page.py",
+        "missing_locators": [
+          "search_input",
+          "search_button",
+          "search_results_container",
+          "add_to_cart_button"
+        ]
+      }
+    ],
+    "Tier_2_Indep_Pages": [
+      {
+        "file": "login_page.py",
+        "class_name": "LoginPage",
+        "situation": "Situation-3",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Navigate to the application",
+            "proposed_signature": "go_to()",
+            "detailed_requirements": "Navigate to the application URL. This method should open the browser and load the login page of the application.",
+            "implementation_checklist": [
+              "Navigate to the application URL using self.page.goto() with URL from self.test_data['qa']",
+              "Wait for page load state 'domcontentloaded' using self.page.wait_for_load_state()",
+              "Perform accessibility analysis by calling self.scenario.a11y_analysis()",
+              "Wait for 'userName' element to be visible using self.page.locator(self.locators['userName']).wait_for(state='visible')",
+              "Wait for 'password' element to be visible using self.page.locator(self.locators['password']).wait_for(state='visible')",
+              "Wait for 'signInbutton' element to be visible using self.page.locator(self.locators['signInbutton']).wait_for(state='visible')"
+            ],
+            "required_locator_keys": [
+              "userName",
+              "password",
+              "signInbutton"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/login_page.py",
+        "locator_gaps": {
+          "ui_map_file": "login_page.json",
+          "present_locators": [
+            "userName",
+            "password",
+            "signInbutton"
+          ],
+          "missing_locators": []
+        }
+      },
+      {
+        "file": "dashboard_page.py",
+        "class_name": "DashboardPage",
+        "situation": "Situation-3",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Search for product and add to cart",
+            "proposed_signature": "search_product_add_cart(product_name)",
+            "detailed_requirements": "Wait for the search input field to be visible, enter the product name, trigger the search, wait for search results to load, locate the product in the results, and click the 'Add to Cart' button for that product.",
+            "implementation_checklist": [
+              "Wait for 'search_input' to be visible",
+              "Clear 'search_input' field",
+              "Input product_name text into 'search_input'",
+              "Click 'search_button' to trigger search",
+              "Wait for 'search_results_container' to be visible",
+              "Wait for page load state to be 'networkidle'",
+              "Locate product element in 'products' using has_text filter with product_name",
+              "Wait for located product element to be visible",
+              "Locate 'add_to_cart_button' within the product element using has_text filter with ' Add To Cart'",
+              "Verify 'add_to_cart_button' is visible using expect assertion",
+              "Check if 'add_to_cart_button' is visible",
+              "Click 'add_to_cart_button'"
+            ],
+            "required_locator_keys": [
+              "search_input",
+              "search_button",
+              "search_results_container",
+              "products",
+              "add_to_cart_button"
+            ]
+          },
+          {
+            "intent": "Navigate to cart",
+            "proposed_signature": "navigate_to_cart()",
+            "detailed_requirements": "Wait for the cart icon or button to be visible and clickable, then click it to navigate to the shopping cart page.",
+            "implementation_checklist": [
+              "Wait for 'cart' to be visible",
+              "Verify 'cart' is clickable",
+              "Click 'cart'",
+              "Wait for page load state to be 'networkidle'",
+              "Wait for page load state to be 'domcontentloaded'"
+            ],
+            "required_locator_keys": [
+              "cart"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/dashboard_page.py",
+        "locator_gaps": {
+          "ui_map_file": "dashboard_page.json",
+          "present_locators": [
+            "products",
+            "cart"
+          ],
+          "missing_locators": [
+            "search_input",
+            "search_button",
+            "search_results_container",
+            "add_to_cart_button"
+          ]
+        }
+      }
+    ],
+    "Tier_3_Dep_Pages": [],
+    "Tier_99_Ref": []
+  }
+}
