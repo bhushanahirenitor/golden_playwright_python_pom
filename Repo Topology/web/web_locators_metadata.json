@@ -44,5 +44,12 @@
       "orderConfirmationText": ".hero-primary",
       "orderId": ".em-spacer-1 .ng-star-inserted"
     }
+  },
+  {
+    "file_path": "locators/web/home_page.json",
+    "locators": {
+      "home_page_logo": "TBD_home_page_logo",
+      "home_page_main_content": "TBD_home_page_main_content"
+    }
   }
 ]
