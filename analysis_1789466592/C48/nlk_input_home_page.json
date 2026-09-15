@@ -1,0 +1,8 @@
+{
+  "ui_map_file_path": "locators/web/home_page.json",
+  "missing_locators": [
+    "home_page_logo",
+    "home_page_main_content"
+  ],
+  "existing_json_content": ""
+}
