@@ -1,0 +1,35 @@
+{
+  "test_script_path": "tests/web/test_suite_02_web.py",
+  "top_5_reference_file": "analysis_1789466592/C49/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Click Search box",
+      "label": "",
+      "mapped_function": "click_search_box",
+      "page_object_name": "searchPage"
+    },
+    {
+      "intent": "Input product name",
+      "label": "",
+      "mapped_function": "input_product_name",
+      "page_object_name": "searchPage"
+    },
+    {
+      "intent": "Click Search button",
+      "label": "",
+      "mapped_function": "click_search_button",
+      "page_object_name": "searchPage"
+    },
+    {
+      "intent": "Verify product is displayed",
+      "label": "",
+      "mapped_function": "verify_product_displayed",
+      "page_object_name": "searchPage"
+    },
+    {
+      "intent": "Navigate to the application",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    }
+  ]
+}
