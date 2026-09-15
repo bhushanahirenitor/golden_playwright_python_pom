@@ -11,31 +11,36 @@
       "page_class_metadata_path": "Repo Topology/web/web_page_class_metadata.json",
       "locators_metadata_path": "Repo Topology/web/web_locators_metadata.json",
       "page_class_path": "pageObjects/web",
-      "locators_path": "locators/web"
+      "locators_path": "locators/web",
+      "test_cases_steps_scripts_map_path": ""
     },
     "windows": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": ""
+      "locators_path": "",
+      "test_cases_steps_scripts_map_path": ""
     },
     "android": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": ""
+      "locators_path": "",
+      "test_cases_steps_scripts_map_path": ""
     },
     "ios": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": ""
+      "locators_path": "",
+      "test_cases_steps_scripts_map_path": ""
     },
     "mac": {
       "page_class_metadata_path": "",
       "locators_metadata_path": "",
       "page_class_path": "",
-      "locators_path": ""
+      "locators_path": "",
+      "test_cases_steps_scripts_map_path": ""
     }
   }
 }
