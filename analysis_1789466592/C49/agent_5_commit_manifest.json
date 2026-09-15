@@ -1,0 +1,35 @@
+{
+  "test_case_id": "C49",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [
+      {
+        "path": "locators/web/search_page.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_updated": [],
+    "pages_created": [
+      {
+        "path": "pageObjects/web/search_page.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "flow_container_updated": [],
+    "test_script_created": [
+      {
+        "path": "tests/web/test_suite_02_web.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "traceability_updated": [
+      {
+        "path": "traceability_map.json",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}
