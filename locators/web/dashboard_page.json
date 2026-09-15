@@ -2,5 +2,9 @@
     "products": ".card-body",
     "productsText": ".card-body b",
     "cart": "[routerlink*='cart']",
-    "orders": "button[routerlink*='myorders']"
+    "orders": "button[routerlink*='myorders']",
+    "search_input": "TBD_search_input",
+    "search_button": "TBD_search_button",
+    "search_results_container": "TBD_search_results_container",
+    "add_to_cart_button": "TBD_add_to_cart_button"
 }
