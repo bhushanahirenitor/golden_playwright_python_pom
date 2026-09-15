@@ -12,7 +12,7 @@ def load_locator(filename):
 class OrdersHistoryPage(CommonPage):
     def __init__(self, page, scenario):
         super().__init__(page, scenario)
-        self.locators = load_locator("orders_history_page_locators.json")
+        self.locators = load_locator("orders_history_page.json")
 
     def search_order_and_select(self):
         order_found = False

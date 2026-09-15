@@ -16,7 +16,7 @@ def load_test_data():
 class LoginPage(CommonPage):
     def __init__(self, page, scenario):
         super().__init__(page, scenario)
-        self.locators = load_locator("login_page_locators.json")
+        self.locators = load_locator("login_page.json")
         self.test_data = load_test_data()
 
     def go_to(self):

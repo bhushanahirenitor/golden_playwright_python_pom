@@ -12,7 +12,7 @@ def load_locator(filename):
 class OrdersReviewPage(CommonPage):
     def __init__(self, page, scenario):
         super().__init__(page, scenario)
-        self.locators = load_locator("orders_review_page_locators.json")
+        self.locators = load_locator("orders_review_page.json")
 
     def search_country_and_select(self, country_code, country_name):
         self.page.locator(self.locators["country"]).press_sequentially(country_code, delay=100)

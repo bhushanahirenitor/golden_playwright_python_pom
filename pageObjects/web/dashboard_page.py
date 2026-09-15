@@ -12,7 +12,7 @@ def load_locator(filename):
 class DashboardPage(CommonPage):
     def __init__(self, page, scenario):
         super().__init__(page, scenario)
-        self.locators = load_locator("dashboard_locators.json")
+        self.locators = load_locator("dashboard_page.json")
 
     def search_product_add_cart(self, product_name):
         product = self.page.locator(self.locators["products"], has_text=product_name).first

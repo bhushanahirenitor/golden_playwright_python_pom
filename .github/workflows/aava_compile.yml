@@ -1,0 +1,71 @@
+name: AAVA Polyglot Compilation
+on:
+  workflow_dispatch:
+    inputs:
+      run_type:
+        description: 'Type of run'
+        required: false
+        default: 'compilation_only'
+
+jobs:
+  build_and_compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # --- Python Example ---
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Python Dependencies & Compile
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -d tests ]; then pytest --collect-only tests/ || true; fi
+
+      # --- JavaScript/TypeScript Example ---
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Node Dependencies & Compile
+        run: |
+          if [ -f package.json ]; then npm install; fi
+          if [ -f tsconfig.json ]; then npx tsc --noEmit || true; fi
+
+      # --- Java Example ---
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install Java Dependencies & Compile
+        run: |
+          if [ -f pom.xml ]; then mvn test-compile || true; fi
+          if [ -f build.gradle ]; then ./gradlew testClasses || true; fi
+
+      # --- C# (.NET) Example ---
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+      - name: Install .NET Dependencies & Compile
+        run: |
+          if ls *.sln 1> /dev/null 2>&1; then dotnet build || true; fi
+
+      # --- Go Example ---
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+      - name: Install Go Dependencies & Compile
+        run: |
+          if [ -f go.mod ]; then go build ./... || true; fi
+
+      # Note: We append `|| true` to the setup commands to ensure the workflow
+      # continues evaluating, but we should remove it for the specific language
+      # being actively tested so that the Action correctly FAILS and generates 
+      # the error logs for Agent-6 to parse.
+      # Users should uncomment and fail hard on their specific target language:
+      # e.g., run: pytest tests/
